@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Show all Animals</title>
+    </head>
+    <body>
+        <h2>All Dogs</h2>
+        <a href="/dogs/new"><button>New Dog</button></a>
+
+        <% if (dogs) { %>
+            <% for (var i in dogs) { %>
+                <a href="/dogs/<%= dogs[i]._id %>"><h3><%= dogs[i].name %></h3></a>
+                <p>Age: <%= dogs[i].age %></p>
+                <p>Breed: <%= dogs[i].breed %></p><br><br>
+            <% } %>
+        <% } %>
+    </body>
+</html>
