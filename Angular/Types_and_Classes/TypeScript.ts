@@ -9,8 +9,7 @@ var arrayOne:  boolean[];
 arrayOne = [true, false, true, true]; 
 var arrayTwo: any[];
 arrayTwo = [1, 'abc', true, 2];
-interface myObj {x: number, y:number};
-var myObj: myObj = { x: 5, y: 10 };
+var myObj: {x: number, y: number} = { x: 5, y: 10 };
 // object constructor
 class MyNode {
     val: number;
@@ -27,11 +26,10 @@ let myNodeInstance = new MyNode(1);
 
 console.log(myNodeInstance.val);
 
-
-function myFunction() {
+function myFunction(): void {
     console.log("Hello World");
     return;
 }
-function sendingErrors() {
+function sendingErrors(): never {
 	throw new Error('Error message');
 }
