@@ -1,0 +1,10 @@
+<body class="container p-3">
+
+  <h1>Switchboard</h1>
+
+  <span *ngFor='let num of status; let i = index'>
+    <button *ngIf='status[i]' (click)='btn(i)' class="btn btn-success">On</button>
+    <button *ngIf='!status[i]' (click)='btn(i)' class="btn btn-danger">Off</button>
+  </span>
+
+</body>
