@@ -1,0 +1,87 @@
+<div class="container p-3">
+  <h1>Registration</h1>
+
+  <div class="row" *ngIf='people'>
+    <p>Thank you for signing up, {{users[users.length-1].firstName}}</p>
+  </div>
+
+  <div class="row p-3 border border-dark">
+
+    <form class="col-6" (submit)='submit()'>
+
+      First Name* <input
+      class="form-control"
+      type="text"
+      name="first_name"
+      placeholder="First Name"
+      required
+      minlength="2"
+      [(ngModel)]='user.firstName'
+      #firstName='ngModel'>
+      <div *ngIf='firstName.errors'>
+        <p class="text-danger" *ngIf='firstName.errors.required && firstName.touched'>First name is required</p>
+        <p class="text-danger" *ngIf='firstName.errors.minlength'>First name must be at least 2 characters</p>
+      </div>
+      
+      Last Name* <input
+      class="form-control"
+      type="text"
+      name="last_name"
+      placeholder="Last Name"
+      required
+      minlength="2"
+      [(ngModel)]='user.lastName'
+      #lastName='ngModel'>
+      <div *ngIf='lastName.errors'>
+        <p class="text-danger" *ngIf='lastName.errors.required && lastName.touched'>Last name is required</p>
+        <p class="text-danger" *ngIf='lastName.errors.minlength'>Last name must be longer than 2 characters</p>
+      </div>
+      
+      Email* <input
+      class="form-control"
+      type="text"
+      name="email"
+      placeholder="Email"
+      required
+      [(ngModel)]='user.email'
+      #email='ngModel'>
+      <div *ngIf='email.errors'>
+        <p class="text-danger" *ngIf='email.errors.required && email.touched'>Email is required</p>
+      </div>
+      
+      Password* <input
+      class="form-control"
+      type="text"
+      name="password"
+      placeholder="Password"
+      required
+      minlength="8"
+      [(ngModel)]='user.password'
+      #password='ngModel'>
+      <div *ngIf='password.errors'>
+        <p class="text-danger" *ngIf='password.errors.required && password.touched'>Password is required</p>
+        <p class="text-danger" *ngIf='password.errors.minlength'>Password must be at least 8 charcters</p>
+      </div>
+      
+      Confirm Password* <input
+      class="form-control"
+      type="text"
+      name="confirmPassword"
+      placeholder="Confirm Password"
+      required
+      [(ngModel)]='user.confirmPassword'
+      #confirmPassword='ngModel'>
+      <div *ngIf='user.confirmPassword !== user.password'>
+        <p class="text-danger" *ngIf='confirmPassword.touched'>Passwords must match!</p>
+      </div>
+      
+      <button *ngIf='firstName.errors || lastName.errors || email.errors || password.errors || user.confirmPassword !== user.password' class="btn btn-secondary mt-2">Submit</button>
+      <button *ngIf='!firstName.errors && !lastName.errors && !email.errors && !password.errors && user.confirmPassword === user.password' type="submit" class="btn btn-success mt-2">Submit</button>
+      
+    </form>
+
+    
+
+  </div>
+
+</div>
