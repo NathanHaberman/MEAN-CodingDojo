@@ -1,0 +1,6 @@
+<div class="container p-3 border border-dark rounded mt-3">
+    <h4>Super Saiyan III Power Level</h4>
+    <p *ngIf='lvl'>{{lvl}}</p>
+    <h5 class="text-warning" *ngIf='lvl > 9000 && lvl <= 20000'>"Over 9000!!"</h5>
+    <h5 class="text-warning" *ngIf='lvl > 20000'>"Superlative!"</h5>
+</div>
