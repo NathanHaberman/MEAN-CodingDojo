@@ -1,0 +1,15 @@
+<hr>
+<div class="row">
+  <div class="col-6">
+    <p>{{theQuote.quote}}</p>
+    <p>- {{theQuote.author}}</p>
+  </div>
+  <div class="col-2">
+    <h2>{{theQuote.rating}}</h2>
+  </div>
+  <div class="col-4">
+    <button class="btn-lg btn-outline-success" (click)='addRating($event)'>Like</button>
+    <button class="btn-lg btn-outline-danger" (click)='subRating($event)'>Dislike</button>
+    <button class="btn-lg btn-dark" (click)='delete($event)'>Delete</button>
+  </div>
+</div>

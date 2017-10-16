@@ -1,0 +1,36 @@
+<div class="container p-3">
+  <div class="row">
+    <h2>Add a Quote</h2>
+  </div>
+  <div class="row">
+    <div class="col-9">
+      <form (submit)='onSubmit()'>
+        <label>Quote:</label>
+        <textarea required minlength="4" class="form-control" rows="6" name="quote" [(ngModel)]='newQuote.quote' #quote='ngModel' placeholder="The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know my name is the Lord when I lay my vengeance upon thee."></textarea>
+        <label class="mt-2">Author:</label>
+        <input required minlength="2" type="text" class="form-control" name="author" [(ngModel)]='newQuote.author' #author='ngModel' placeholder="Samuel L. Jackson">
+        <button type="button" class="btn btn-secondary mt-3" *ngIf='!quote.valid || !author.valid; else valid'>Add Quote</button>
+        <ng-template #valid><button type="submit" class="btn btn-outline-info mt-3">Add Quote</button></ng-template>
+      </form>
+    </div>
+    <div class="col-3">
+      <div *ngIf='quote.errors && quote.errors.required'>
+        <p class="text-danger">Quote is required</p>
+      </div>
+      <div *ngIf='quote.errors && quote.errors.minlength'>
+        <p class="text-danger" *ngIf='quote.errors.minlength.requiredLength > quote.errors.minlength.actualLength'>Quote must be at least 4 characters long</p>
+      </div>
+
+      <div *ngIf='author.errors && author.errors.required'>
+        <p class="text-danger">Author is required</p>
+      </div>
+      <div *ngIf='author.errors && author.errors.minlength'>
+        <p class="text-danger" *ngIf='author.errors.minlength.requiredLength > author.errors.minlength.actualLength'>Author must be at least 2 characters long</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-3">Quotes</h2>
+  <app-all-quotes *ngFor='let quote of allQuotes; let i = index' [theQuote]=quote [i]=i (addEmitter)='addEmitter($event)' (subEmitter)='subEmitter($event)' (delEmitter)='delEmitter($event)'></app-all-quotes>
+
+</div>
