@@ -13,13 +13,15 @@ export class ListComponent implements OnInit {
   constructor(
     private _apiService: ApiService,
     private _router: Router,
-    private _location: Location,
-  ) {
-    this._apiService.getPlayers()
-    .then(data => this.players = data);
-   }
+  ) { }
 
   ngOnInit() {
+    this.getPlayers();
+  }
+
+  getPlayers(){
+    this._apiService.getPlayers()
+    .then(data => this.players = data);
   }
 
   deletePlayer(id){
@@ -28,7 +30,7 @@ export class ListComponent implements OnInit {
       if (data.error){
         console.log('Delete error')
       } else {
-        this._router
+        this.getPlayers();
       }
     })
   }

@@ -27,4 +27,10 @@ export class ApiService {
     .map(data => data.json())
     .toPromise()
   }
+
+  changeStatus(game,id,status){
+    return this._http.get(`/api/changeStatus/${game}/${id}/${status}`)
+    .map(data => data.json())
+    .toPromise()
+  }
 }

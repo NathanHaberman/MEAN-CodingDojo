@@ -4,7 +4,9 @@ var mongoose = require('mongoose')
 var playerSchema = new mongoose.Schema({
     name: {type: String, required: true},
     position: {type: String},
-    status: {type: Object, required: true, default: ['undecided','undecided','undecided']}
+    g1: {type: String, required: true},
+    g2: {type: String, required: true},
+    g3: {type: String, required: true}
 });
 
 // Change example here too

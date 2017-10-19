@@ -14,7 +14,10 @@ module.exports = function(app){
     app.post('/api/deletePlayer', function(req,res){
         players.deletePlayer(req,res);
     });
-
+    
+    app.get('/api/changeStatus/:id/:game/:status', function(req,res){
+        players.changeStatus(req,res);
+    });
 
 
     app.all("*", (req,res,next) => {

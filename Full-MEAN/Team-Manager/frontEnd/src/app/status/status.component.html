@@ -1,5 +1,10 @@
-<p>
-  status works!
-</p>
-
-<router-outlet></router-outlet>
+<div class="container rounded p-3">
+  <h2 class="text-white">All Games</h2>
+  <div class="row p-3">
+    <a [routerLink]="['game/', 1]" class="text-light">Game 1</a>&nbsp;|&nbsp;
+    <a [routerLink]="['game/', 2]" class="text-light">Game 2</a>&nbsp;|&nbsp;
+    <a [routerLink]="['game/', 3]" class="text-light">Game 3</a>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+  

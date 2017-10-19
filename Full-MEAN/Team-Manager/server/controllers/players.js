@@ -15,6 +15,9 @@ module.exports = {
         if (req.body.position){
             newPlayer.position = req.body.position
         }
+        newPlayer.g1 = 'undecided'
+        newPlayer.g2 = 'undecided'
+        newPlayer.g3 = 'undecided'
         newPlayer.save(function(err){
             if (err){
                 res.json({error:"Error Saving"});
@@ -32,5 +35,42 @@ module.exports = {
                 res.json({good: ''})
             }
         })
+    },
+
+    changeStatus: function(req,res){
+        Player.find({'_id':req.params.id}, function(err,person){
+            if (err){
+                res.json({'error':err});
+            } else {
+                if (req.params.game === 'g1'){
+                    Player.update(person[0], {g1 : req.params.status}, function(err){
+                        if (err){
+                            res.json({'error': 'error saving'})
+                        } else {
+                            res.json({'ok': 'everything good'})
+                        }
+                    })
+                }
+                if (req.params.game === 'g2'){
+                    Player.update(person[0], {g2 : req.params.status}, function(err){
+                        if (err){
+                            res.json({'error': 'error saving'})
+                        } else {
+                            res.json({'ok': 'everything good'})
+                        }
+                    })
+                }
+                if (req.params.game === 'g3'){
+                    Player.update(person[0], {g3 : req.params.status}, function(err){
+                        if (err){
+                            res.json({'error': 'error saving'})
+                        } else {
+                            res.json({'ok': 'everything good'})
+                        }
+                    })
+                }
+            }
+        })
     }
+
 };

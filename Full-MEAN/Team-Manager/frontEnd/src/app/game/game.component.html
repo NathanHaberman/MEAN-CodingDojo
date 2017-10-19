@@ -1,3 +1,23 @@
-<p>
-  game works!
-</p>
+<table class="container pre-scrollable rounded bg-light p-3">
+    <tr class="row p-3 justify-content-between">
+      <th class="col-3">Name</th>
+      <th class="col-7">Status</th>
+    </tr>
+    <tr *ngFor='let player of players' class="players row p-3 justify-content-between">
+      <td class="col-3">{{player.name}}</td>
+      <td class="col-7">
+        <button [ngClass]="{
+          'btn-outline-success': player[game] != 'playing',
+          'btn-success': player[game] === 'playing'
+        }" class="btn" (click)="changeStatus(player._id, 'playing')">Playing</button>
+        <button [ngClass]="{
+          'btn-outline-danger': player[game] != 'not',
+          'btn-danger': player[game] === 'not'
+        }" class="btn" (click)="changeStatus(player._id, 'not')">Not Playing</button>
+        <button [ngClass]="{
+          'btn-outline-warning': player[game] != 'undecided',
+          'btn-warning': player[game] === 'undecided'
+        }" class="btn" (click)="changeStatus(player._id, 'undecided')">Undecided</button>
+      </td>
+    </tr>
+  </table>
