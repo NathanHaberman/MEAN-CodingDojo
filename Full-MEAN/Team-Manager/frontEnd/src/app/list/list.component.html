@@ -1,0 +1,12 @@
+<table class="container pre-scrollable rounded bg-light p-3">
+  <tr class="row p-3 justify-content-between">
+    <th class="col-3">Name</th>
+    <th class="col-3">Position</th>
+    <th class="col-3">Action</th>
+  </tr>
+  <tr *ngFor='let player of players' class="players row p-3 justify-content-between">
+    <td class="col-3">{{player.name}}</td>
+    <td class="col-3">{{player.position}}</td>
+    <td class="col-3"><button (click)='deletePlayer(player)' class="btn btn-danger">Delete Player</button></td>
+  </tr>
+</table>
